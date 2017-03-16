@@ -1,11 +1,19 @@
 <?php
 //PING servers
-$fp = fsockopen('www.google.fr', 80, $errno, $errstr, 30);
-
-if(!$fp){
-	echo $errstr;
+//die('bite');
+if(PHP_OS == 'Linux'){
+	exec('ping www.google.fr -c 2', $output);
 }else{
-	echo "Connexion Success";
+	exec('ping www.google.fr', $output);
 }
-
+echo "Destination : ".$output[0].'<br/>';
+echo "Stats : ".$output[1].'<br/>';
+echo "Packets : ".$output[4].'<br/>';
+echo "Time : ".$output[5].'<br/>';
+//index
+/*echo count($output).'<br/>';
+for($i=0; $i<count($output); $i++){
+	echo $output[$i].$i.'<br/>';
+}
+*/
 ?>
