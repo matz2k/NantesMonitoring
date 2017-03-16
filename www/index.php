@@ -19,18 +19,21 @@ if(isset($_POST['login']) && isset($_POST['status'])){
 	</header>
 
 	<body style="background-color: grey;">
+		Le status doit être "tech" pour que la connexion soit valide.<br/>
+		Sinon la connexion est refusée, comme ce qui est voulue dans l'app finale.
 		<form method="post">
 			<input type="text" placeholder="Login" name="login"><br/><br/>
 			<input type="text" placeholder="Status" name="status"><br/><br/>
 			<input type="submit" value="Valider">
 		</form>
-
 		<div class="srv" style="background-color: orange;">
 			<h2>SERVER 1</h2>
 			<p>Processeur : <?php echo php_uname('m');?></p><br/>
 			<p>OS : <?php echo PHP_OS;?></p><br/>
 			<p>Status : Online</p><br/>
-			<input type="button" value="PING" class="ping">
+			<form action="ping.php">
+				<input type="submit" name="ping" placeholder="PING IT">
+			</form>
 		</div>
 
 		<div class="srv" style="background-color: green;">
@@ -38,8 +41,12 @@ if(isset($_POST['login']) && isset($_POST['status'])){
 			<p>Processeur : <?php echo php_uname('m');?></p><br/>
 			<p>OS : <?php echo PHP_OS;?></p><br/>
 			<p>Status : Offline</p><br/>
-			<input type="button" value="PING" class="ping">
+			<form action="ping.php">
+				<input type="submit" name="ping" placeholder="PING IT">
+			</form>
 		</div>
+		<br/>
+		Ici nous pourrons voir les stats des serveur : online, les composants, dernière connexion.
 
 
 	</body>
